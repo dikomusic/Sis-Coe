@@ -27,8 +27,27 @@ class SocioTitular extends Model
         'destino',
         'fecha_alta_ejercito',
         'fecha_alta_coe',
-        'estado_socio'
+        'estado_socio',
+        'persona_id',
+        'grado_id',
+        'arma_id',
+        'destino_id'
     ];
+
+    public function persona()
+    {
+        return $this->belongsTo(Persona::class, 'persona_id');
+    }
+
+    public function grado()
+    {
+        return $this->belongsTo(Grado::class, 'grado_id');
+    }
+
+    public function beneficiarios()
+    {
+        return $this->hasMany(BeneficiarioTitular::class, 'id_titular', 'id_titular');
+    }
 
     //para respaldo documentos
     public function documentos()

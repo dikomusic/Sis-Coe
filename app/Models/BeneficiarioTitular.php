@@ -30,8 +30,15 @@ class BeneficiarioTitular extends Model
         'estado_beneficiario',     // estado propio del beneficiario
         'estado_por_titular',      // estado heredado del socio titular
         'observacion',
-        'nota'
+        'nota',
+        'persona_id',
+        'parentesco_id'
     ];
+
+    public function persona()
+    {
+        return $this->belongsTo(Persona::class, 'persona_id');
+    }
 
     protected $casts = [
         'fecha_nacimiento' => 'date',

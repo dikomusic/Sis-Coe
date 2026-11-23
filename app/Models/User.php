@@ -38,4 +38,9 @@ class User extends Authenticatable
     {
         return $this->rol === 'INVITADO';
     }
+
+    public function isCajero(): bool
+    {
+        return in_array($this->rol, ['CAJERO', 'CAJAS', 'ADMIN']);
+    }
 }
